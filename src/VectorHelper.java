@@ -1,10 +1,19 @@
+
+import java.security.SecureRandom;
 import java.util.Random;
+import java.lang.*;
 
 /**
- * Created by ABDESSALEM on 13/10/2017.
+ * Created by IZEM & OUMELLAL on 13/10/2017.
  */
 public class VectorHelper {
 
+
+    // Definitions des parametres
+    private final int MAX = 3000 ;
+
+    private int[] Sum;
+    private int c=0 ;
     /**
      * Le vecteur sur lequel on effectue les opertations
      */
@@ -118,5 +127,101 @@ public class VectorHelper {
                 Table[i] = Table[i]*n ;
             }
         }
+
+
+    public int [] getTable() {return Table;}
+
+
+
+    /**
+     * This method to sort out v array elements.
+     * @param v : array .
+     * @param deb : indexes the element which needs to get sorted.
+     * @param fin : indexes last element.
+     */
+    private void TriSelection(int v[],int deb, int fin) {
+        int i = deb+1 ;
+        while (deb<fin && i<v.length) {
+            if(v[deb] > v[i]) {
+                c = v[deb];
+                v[deb] = v [i] ;
+                v[i] = c ;
+                i++;
+            }
+            else i++;
+            if(i==v.length) {
+                deb++;
+                TriSelection(v,deb,fin);
+            }
+        }
+
+    }
+
+    /**
+     * this method sorts array of the TabletorHelper Array.
+     */
+    public void Sort() {
+        TriSelection(Table,0,Table.length-1);
+    }
+
+
+    /**
+     * this methods creates and implementes an array Table with length n and elements a.
+     * @param n: Array length.
+     * @param a : Array Elements.
+     */
+    public void setTabletor(int n,int ...a){
+        Table = new int[n] ;
+        if (n == Table.length) {
+            for (int i=0;i<n;i++){
+                Table[i]=a[i];
+            }
+        }
+
+    }
+
+    /**
+     *this method prints Table array elements.
+     */
+    public void PrintElements() {
+        for (int i =0;i< Table.length;i++){
+            System.out.println(Table[i]);
+        }
+    }
+
+    /**
+     * this method sums two Vectors if they have the same length, throws an exception else.
+     * @param V1:Array .
+     * @param V2: Array .
+     * @return : the summed Array.
+     * @throws TailleException
+     */
+    public int[] Sommer(int V1[], int V2[])  throws TailleException{
+
+        if (V1.length != V2.length) throw new TailleException() ;
+        else {
+            Sum = new int[V1.length];
+            for(int i=0;i<V1.length;i++) {
+                Sum[i] = V1[i] + V2[i] ;
+            }
+            return Sum;
+        }
+    }
+
+
+    /**
+     * this methode generates automatically the Array Table.
+     * @param taille : length .
+     */
+    public void GenererAuto(int taille) {
+        Table = new int [taille] ;
+        for(int i=0 ; i<taille;i++) {
+            SecureRandom x = new SecureRandom() ;
+            Table[i] = x.nextInt(125) ;
+        }
+    }
+
+
+
 
 }

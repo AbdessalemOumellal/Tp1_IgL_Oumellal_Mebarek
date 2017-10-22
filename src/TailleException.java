@@ -6,6 +6,6 @@
 public class TailleException extends Exception {
 
     public TailleException() {
-        System.out.println("Les tableaux en entrée sont de tailles différentes,veuillez relire la doc.");
+        System.out.println("Les tableaux en entrée sont de tailles différentes,veuillez relire la doc");
     }
 }

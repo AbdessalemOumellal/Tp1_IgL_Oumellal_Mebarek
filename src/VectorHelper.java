@@ -4,13 +4,16 @@ import java.util.Random;
 import java.lang.*;
 
 /**
- * Created by IZEM & OUMELLAL on 13/10/2017.
+ * Created by IZEM and OUMELLAL on 13/10/2017.
  */
 public class VectorHelper {
 
 
     // Definitions des parametres
-    private final int MAX = 3000 ;
+
+    public int[] getSum() {
+        return Sum;
+    }
 
     private int[] Sum;
     private int c=0 ;
@@ -20,10 +23,11 @@ public class VectorHelper {
 
     private int Table[];
 
+
     /**
      * La valeur maximale qu'un element peut prendre
      */
-    private final int elemMax = 100;
+    private final int elemMax = 99999;
 
     /**
      * Le maximum du vecteur
@@ -45,15 +49,16 @@ public class VectorHelper {
     }
 
 
+
     /**
      *  Constructeur d'un vecteur aleatoire en lui donnant la  taille
      *  @param n la taille du vecteur
      */
     public VectorHelper(int n)
-        {
+            {
                 Table = new int[n];
                 Random rand = new Random();
-            for (int i=0;i<n;i++)
+                for (int i=0;i<n;i++)
                 {
                     Table[i]= rand.nextInt(elemMax);
                 }
@@ -84,7 +89,7 @@ public class VectorHelper {
 
     /**
      * Inverser le vecteur <br>
-     * Exemple : Table = {4,5,6} Resultat: Table = {6,5,4}
+     * Exemple : Table = {4,5,6} Resultat: Table = {6,5,4} .
      */
         public void InvTAB() {
             int i = 0, j = Table.length - 1, n = Table.length;
@@ -99,7 +104,7 @@ public class VectorHelper {
 
     /**
      * Obtenir le minimum et le maximum d'un vecteur <br>
-     * Exemple : Table = {4,5,6,18,3} Resultat: Min = 3 et Max = 18
+     * Exemple : Table = {4,5,6,18,3} Resultat: Min = 3 et Max = 18 .
      */
         public void MinMax()
         {
@@ -117,7 +122,7 @@ public class VectorHelper {
 
     /**
      * Multiplier toutes les case * n <br>
-     * Exemple : Table = {4,9,6,2,8} et n=3  Resultat: Table = {12,27,18,6,24}
+     * Exemple : Table = {4,9,6,2,8} et n=3  Resultat: Table = {12,27,18,6,24}.
      * @param n Coefficient de la fonction
      */
         public void fonctionMult(int n)
@@ -130,6 +135,10 @@ public class VectorHelper {
 
 
     public int [] getTable() {return Table;}
+
+    public int getmin() {return min;}
+
+    public int getmax() {return max;}
 
 
 
@@ -158,7 +167,8 @@ public class VectorHelper {
     }
 
     /**
-     * this method sorts array of the TabletorHelper Array.
+     * this method sorts array of the VectorHelper Array. <br>
+     * Exemple : Table = {1000,20,29,7} Resultat: Table = {7,20,29,1000}.
      */
     public void Sort() {
         TriSelection(Table,0,Table.length-1);
@@ -166,37 +176,14 @@ public class VectorHelper {
 
 
     /**
-     * this methods creates and implementes an array Table with length n and elements a.
-     * @param n: Array length.
-     * @param a : Array Elements.
-     */
-    public void setTabletor(int n,int ...a){
-        Table = new int[n] ;
-        if (n == Table.length) {
-            for (int i=0;i<n;i++){
-                Table[i]=a[i];
-            }
-        }
-
-    }
-
-    /**
-     *this method prints Table array elements.
-     */
-    public void PrintElements() {
-        for (int i =0;i< Table.length;i++){
-            System.out.println(Table[i]);
-        }
-    }
-
-    /**
-     * this method sums two Vectors if they have the same length, throws an exception else.
+     * this method sums two Vectors if they have the same length, throws an exception else.<br>
+     * Exemple : V1 = {4,5,6} ; V2 = {7,9,11}  Resultat: Table = {11,14,17}.
      * @param V1:Array .
      * @param V2: Array .
      * @return : the summed Array.
      * @throws TailleException
      */
-    public int[] Sommer(int V1[], int V2[])  throws TailleException{
+    public void Sommer(int V1[], int V2[])  throws TailleException{
 
         if (V1.length != V2.length) throw new TailleException() ;
         else {
@@ -204,24 +191,18 @@ public class VectorHelper {
             for(int i=0;i<V1.length;i++) {
                 Sum[i] = V1[i] + V2[i] ;
             }
-            return Sum;
         }
     }
 
-
-    /**
-     * this methode generates automatically the Array Table.
-     * @param taille : length .
-     */
-    public void GenererAuto(int taille) {
-        Table = new int [taille] ;
-        for(int i=0 ; i<taille;i++) {
-            SecureRandom x = new SecureRandom() ;
-            Table[i] = x.nextInt(125) ;
+    public void ShowSum()
+    {
+        for(int i=0;i<Sum.length;i++)
+        {
+            System.out.print(" | "+Sum[i]);
         }
+        System.out.print(" |");
+        System.out.println("");
     }
-
-
 
 
 }

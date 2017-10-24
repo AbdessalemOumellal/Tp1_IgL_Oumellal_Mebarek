@@ -12,6 +12,7 @@ public class VectorHelper {
     // Definitions des parametres
 
     public int[] getSum() {
+        System.out.printf("Helloo SIR AM CREATING A CONFLICT ! :) ");
         return Sum;
     }
 
